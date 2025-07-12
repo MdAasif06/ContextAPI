@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import College from "./College";
 import { subjectContext } from "./ContextData";
+import useToggle from "./useToggle";
+
 const App = () => {
   const [subject,setSubject]=useState()
+  const[value,toggleValue]=useToggle(true)
+  console.log("value---- ",value)
   return (
     <div style={{ backgroundColor: "yellow", padding: "10px" }}>
       <subjectContext.Provider value={subject}>
@@ -15,7 +19,12 @@ const App = () => {
         </select>
         <button onClick={()=>setSubject("")}>subject Clear</button>
         <h1>Context API</h1>
-        <College />
+        {/* <College /> */}
+        <button onClick={toggleValue}>Toggle</button>
+        <button>hide heading</button>
+        <button>show heading</button>
+        {value ? <h2>Cutom hooks in react</h2>:null}
+
       </subjectContext.Provider>
     </div>
   );
